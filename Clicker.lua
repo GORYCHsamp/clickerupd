@@ -318,9 +318,8 @@ if Data.Settings.Keys == 2 and not sampIsScoreboardOpen() and not sampIsChatInpu
   end
 
 function UpdateCl()
-{
 sampAddChatMessage("{00FA9A}v1.0{FFD700} | {FFFFFF} Установлен беспалевный режим в beta стадии", 0xFFFFFF)
-}  
+end
   
 function Clicker()
 	Dialog:run()
