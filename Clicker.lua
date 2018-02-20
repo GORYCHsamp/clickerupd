@@ -548,8 +548,8 @@ function update()
 	end)
 end
 function goupdate()
-sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}Обновление до версии: {00FA9A}'..version), 0xFFFFFF)
-sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}Текущая версия: '..thisScript().version..), 0xFFFFFF)
+sampAddChatMessage(("{00FA9A}[Clicker]{FFD700}: {FFFFFF}Обновление до версии: {00FA9A}"..version), 0xFFFFFF)
+sampAddChatMessage(("{00FA9A}[Clicker]{FFD700}: {FFFFFF}Текущая версия: "..thisScript().version..), 0xFFFFFF)
 wait(300)
 downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23)
 	if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
