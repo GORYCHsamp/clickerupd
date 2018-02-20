@@ -10,10 +10,6 @@ local dlstatus = require('moonloader').download_status
 
 function main()
 	while not isSampAvailable() do wait(0) end
-	if data.options.autoupdate == 1 then
-		update()
-		while update ~= false do wait(100) end
-	end
 	sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} Настройки: {00FA9A}/clicker {FFD700}|{FFFFFF} Автор: {00FA9A}GORYCH", 0xFFFFFF)
 	if not doesDirectoryExist("moonloader/config") then createDirectory("moonloader/config") end
 	Data = inicfg.load({
@@ -23,8 +19,14 @@ function main()
 			Keys = 2,
 			Job = 2,
 			Nopalevo = 1,
+			autoupdate = 1,
 		},
 	}, "Clicker")
+	if data.options.autoupdate == 1 then
+	    sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} Проверка обновлений ...", 0xFFFFFF)
+		update()
+		while update ~= false do wait(100) end
+	end
 	if Data.Settings.Keys == 1 then
 	sampAddChatMessage(string.format("{00FA9A}Clicker{FFD700} |{FFFFFF} В данный момент установлена клавиша: {00FA9A}%s ", Data.Settings.Key1),0xFFFFFF)
 	elseif Data.Settings.Keys == 2 then
