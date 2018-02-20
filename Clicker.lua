@@ -14,7 +14,7 @@ function main()
 		update()
 		while update ~= false do wait(100) end
 	end
-	sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} Настройки: {00FA9A}/clicker {FFD700}|{FFFFFF} Автор: {00FA9A}GORYCH", 0xFFFFFF)
+	sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} РќР°СЃС‚СЂРѕР№РєРё: {00FA9A}/clicker {FFD700}|{FFFFFF} РђРІС‚РѕСЂ: {00FA9A}GORYCH", 0xFFFFFF)
 	if not doesDirectoryExist("moonloader/config") then createDirectory("moonloader/config") end
 	Data = inicfg.load({
 		Settings = {
@@ -26,23 +26,23 @@ function main()
 		},
 	}, "Clicker")
 	if Data.Settings.Keys == 1 then
-	sampAddChatMessage(string.format("{00FA9A}Clicker{FFD700} |{FFFFFF} В данный момент установлена клавиша: {00FA9A}%s ", Data.Settings.Key1),0xFFFFFF)
+	sampAddChatMessage(string.format("{00FA9A}Clicker{FFD700} |{FFFFFF} Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅР° РєР»Р°РІРёС€Р°: {00FA9A}%s ", Data.Settings.Key1),0xFFFFFF)
 	elseif Data.Settings.Keys == 2 then
-	sampAddChatMessage(string.format("{00FA9A}Clicker{FFD700} |{FFFFFF} В данный момент установлены клавиши: {00FA9A}%s{FFFFFF} + {00FA9A}%s", Data.Settings.Key1, Data.Settings.Key2), 0xFFFFFF)
+	sampAddChatMessage(string.format("{00FA9A}Clicker{FFD700} |{FFFFFF} Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РєР»Р°РІРёС€Рё: {00FA9A}%s{FFFFFF} + {00FA9A}%s", Data.Settings.Key1, Data.Settings.Key2), 0xFFFFFF)
 	end
 	sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} Update log: {00FA9A}/updcl", 0xFFFFFF)
 	inicfg.save(Data, "Clicker")
 	Dialog = lua_thread.create_suspended(DialogFunc)
 	sampRegisterChatCommand("clicker", Clicker)
 	sampRegisterChatCommand("updcl", UpdateCl)
-	sampSetClientCommandDescription("clicker", "Настройки клавиш для кликера")
-	sampSetClientCommandDescription("updcl", "Просмотреть список изменений")
+	sampSetClientCommandDescription("clicker", "РќР°СЃС‚СЂРѕР№РєРё РєР»Р°РІРёС€ РґР»СЏ РєР»РёРєРµСЂР°")
+	sampSetClientCommandDescription("updcl", "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРїРёСЃРѕРє РёР·РјРµРЅРµРЅРёР№")
 	score = 0
 	func()
 end
 
 function hook.onServerMessage(color, text)
-    if string.find(text, "^Этим клиентом, занят другой механик!$") then
+    if string.find(text, "^Р­С‚РёРј РєР»РёРµРЅС‚РѕРј, Р·Р°РЅСЏС‚ РґСЂСѓРіРѕР№ РјРµС…Р°РЅРёРє!$") then
         Delay = 1
 	else
 	    Delay = 0
@@ -319,7 +319,7 @@ if Data.Settings.Keys == 2 and not sampIsScoreboardOpen() and not sampIsChatInpu
 
 function UpdateCl()
 {
-sampAddChatMessage("{00FA9A}v1.0{FFD700} | {FFFFFF} Установлен беспалевный режим в beta стадии", 0xFFFFFF)
+sampAddChatMessage("{00FA9A}v1.0{FFD700} | {FFFFFF} РЈСЃС‚Р°РЅРѕРІР»РµРЅ Р±РµСЃРїР°Р»РµРІРЅС‹Р№ СЂРµР¶РёРј РІ beta СЃС‚Р°РґРёРё", 0xFFFFFF)
 }  
   
 function Clicker()
@@ -327,21 +327,21 @@ function Clicker()
 end
 
 function DialogFunc()
-    if Data.Settings.Keys == 1 then KeysString = "{55FF55}1 клавиша." end
-	if Data.Settings.Keys == 2 then KeysString = "{55FF55}2 клавиши." end
-	if Data.Settings.Job == 1 then JobString = "{FFFFFF}1. Ремонт машины!" end
-	if Data.Settings.Job == 2 then JobString = "{FFFFFF}2. Состояние двигателя!" end
-	if Data.Settings.Job == 3 then JobString = "{FFFFFF}3. Установка AutoLock!" end
-	if Data.Settings.Nopalevo == 1 then NopalevoString = "{55FF55}Вкл." end
-	if Data.Settings.Nopalevo == 2 then NopalevoString = "{FF5555}Выкл." end
+    if Data.Settings.Keys == 1 then KeysString = "{55FF55}1 РєР»Р°РІРёС€Р°." end
+	if Data.Settings.Keys == 2 then KeysString = "{55FF55}2 РєР»Р°РІРёС€Рё." end
+	if Data.Settings.Job == 1 then JobString = "{FFFFFF}1. Р РµРјРѕРЅС‚ РјР°С€РёРЅС‹!" end
+	if Data.Settings.Job == 2 then JobString = "{FFFFFF}2. РЎРѕСЃС‚РѕСЏРЅРёРµ РґРІРёРіР°С‚РµР»СЏ!" end
+	if Data.Settings.Job == 3 then JobString = "{FFFFFF}3. РЈСЃС‚Р°РЅРѕРІРєР° AutoLock!" end
+	if Data.Settings.Nopalevo == 1 then NopalevoString = "{55FF55}Р’РєР»." end
+	if Data.Settings.Nopalevo == 2 then NopalevoString = "{FF5555}Р’С‹РєР»." end
 	if Data.Settings.Keys == 1 then
-	    local DialogText = string.format("{F6DB6A}Количество клавиш: \t%s\n{F6DB6A}Выбор работы.\n{F6DB6A}Беспалевный режим(beta)\t%s\n{F6DB6A}Изменить клавишу:\t %s", KeysString, NopalevoString, Data.Settings.Key1)
+	    local DialogText = string.format("{F6DB6A}РљРѕР»РёС‡РµСЃС‚РІРѕ РєР»Р°РІРёС€: \t%s\n{F6DB6A}Р’С‹Р±РѕСЂ СЂР°Р±РѕС‚С‹.\n{F6DB6A}Р‘РµСЃРїР°Р»РµРІРЅС‹Р№ СЂРµР¶РёРј(beta)\t%s\n{F6DB6A}РР·РјРµРЅРёС‚СЊ РєР»Р°РІРёС€Сѓ:\t %s", KeysString, NopalevoString, Data.Settings.Key1)
 	    dialogId = 1100
 	    dialogButton = nil
 	    dialogListItem = nil
 	    dialogInput = nil
 	    dialogBool = false
-	    sampShowDialog(dialogId, "{FFFFFF}Настройки скрипта." , DialogText, "Выбрать", "Закрыть", 4)
+	    sampShowDialog(dialogId, "{FFFFFF}РќР°СЃС‚СЂРѕР№РєРё СЃРєСЂРёРїС‚Р°." , DialogText, "Р’С‹Р±СЂР°С‚СЊ", "Р—Р°РєСЂС‹С‚СЊ", 4)
 	    while not dialogBool do
 	    	wait(0)
 	    	dialogBool, dialogButton, dialogListItem, dialogInput = sampHasDialogRespond(dialogId)
@@ -356,13 +356,13 @@ function DialogFunc()
 			    inicfg.save(Data, "Clicker")
     			DialogFunc()
 			elseif dialogListItem == 1 then
-		    	local DialogText = "{F6DB6A}1.{FFFFFF} Ремонтировать авто!\n{F6DB6A}2.{FFFFFF} Восстанавливать состояние!\n{F6DB6A}3.{FFFFFF} Заниматься установкой AutoLock!"
+		    	local DialogText = "{F6DB6A}1.{FFFFFF} Р РµРјРѕРЅС‚РёСЂРѕРІР°С‚СЊ Р°РІС‚Рѕ!\n{F6DB6A}2.{FFFFFF} Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ!\n{F6DB6A}3.{FFFFFF} Р—Р°РЅРёРјР°С‚СЊСЃСЏ СѓСЃС‚Р°РЅРѕРІРєРѕР№ AutoLock!"
 	 		   dialogId = 228
 	 		   dialogButton = nil
 	  		  dialogListItem = nil
 			    dialogInput = nil
 			    dialogBool = false
-			    sampShowDialog(dialogId, "{FFFFFF}Выбор работы" , DialogText, "Принять", "Отмена", 4)
+			    sampShowDialog(dialogId, "{FFFFFF}Р’С‹Р±РѕСЂ СЂР°Р±РѕС‚С‹" , DialogText, "РџСЂРёРЅСЏС‚СЊ", "РћС‚РјРµРЅР°", 4)
 			    while not dialogBool do
 	 		   	wait(0)
 			    	dialogBool, dialogButton, dialogListItem, dialogInput = sampHasDialogRespond(dialogId)
@@ -393,12 +393,12 @@ function DialogFunc()
 			    inicfg.save(Data, "Clicker")
     			DialogFunc()
 	    	elseif dialogListItem == 3 then
-		    	local DialogText = string.format("{F6DB6A}Введите название клавиши.\n{F6DB6A}Не стоит использовать клавиши LBUTTON, CTRL и ALT.\n\n{F6DB6A}Установленная клавиша: {FFFFFF}%s", Data.Settings.Key1)
+		    	local DialogText = string.format("{F6DB6A}Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё.\n{F6DB6A}РќРµ СЃС‚РѕРёС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєР»Р°РІРёС€Рё LBUTTON, CTRL Рё ALT.\n\n{F6DB6A}РЈСЃС‚Р°РЅРѕРІР»РµРЅРЅР°СЏ РєР»Р°РІРёС€Р°: {FFFFFF}%s", Data.Settings.Key1)
 					dialogButton = nil
 					dialogListItem = nil
 					dialogInput = nil
 					dialogBool = false
-					sampShowDialog(dialogId, "{FFFFFF}Изменение клавиши." , DialogText, "Применить", "Назад", 1)
+					sampShowDialog(dialogId, "{FFFFFF}РР·РјРµРЅРµРЅРёРµ РєР»Р°РІРёС€Рё." , DialogText, "РџСЂРёРјРµРЅРёС‚СЊ", "РќР°Р·Р°Рґ", 1)
 					sampSetCurrentDialogEditboxText(Data.Settings.Key1)
 					while not dialogBool do
 						wait(0)
@@ -411,7 +411,7 @@ function DialogFunc()
 							inicfg.save(Data, "Clicker")
 							DialogFunc()
 						else
-							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Введите название клавиши."), 0xFF0000)
+							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё."), 0xFF0000)
 						end
 					else
 						DialogFunc()
@@ -420,13 +420,13 @@ function DialogFunc()
 		else
 		end
 	elseif Data.Settings.Keys == 2 then
-	    local DialogText = string.format("{F6DB6A}Количество клавиш: \t%s\n{F6DB6A}Выбор работы.\n{F6DB6A}Беспалевный режим(beta)\t%s\n{F6DB6A}Изменить клавишу 1:\t %s\n{F6DB6A}Изменить клавишу 2:\t %s", KeysString, NopalevoString, Data.Settings.Key1, Data.Settings.Key2)
+	    local DialogText = string.format("{F6DB6A}РљРѕР»РёС‡РµСЃС‚РІРѕ РєР»Р°РІРёС€: \t%s\n{F6DB6A}Р’С‹Р±РѕСЂ СЂР°Р±РѕС‚С‹.\n{F6DB6A}Р‘РµСЃРїР°Р»РµРІРЅС‹Р№ СЂРµР¶РёРј(beta)\t%s\n{F6DB6A}РР·РјРµРЅРёС‚СЊ РєР»Р°РІРёС€Сѓ 1:\t %s\n{F6DB6A}РР·РјРµРЅРёС‚СЊ РєР»Р°РІРёС€Сѓ 2:\t %s", KeysString, NopalevoString, Data.Settings.Key1, Data.Settings.Key2)
 	    dialogId = 1100
 	    dialogButton = nil
 	    dialogListItem = nil
 	    dialogInput = nil
 	    dialogBool = false
-	    sampShowDialog(dialogId, "{FFFFFF}Настройки скрипта." , DialogText, "Выбрать", "Закрыть", 4)
+	    sampShowDialog(dialogId, "{FFFFFF}РќР°СЃС‚СЂРѕР№РєРё СЃРєСЂРёРїС‚Р°." , DialogText, "Р’С‹Р±СЂР°С‚СЊ", "Р—Р°РєСЂС‹С‚СЊ", 4)
 	    while not dialogBool do
 	    	wait(0)
 	    	dialogBool, dialogButton, dialogListItem, dialogInput = sampHasDialogRespond(dialogId)
@@ -441,13 +441,13 @@ function DialogFunc()
 			    inicfg.save(Data, "Clicker")
     			DialogFunc()
 			elseif dialogListItem == 1 then
-		    	local DialogText = "{F6DB6A}1.{FFFFFF} Ремонтировать авто!\n{F6DB6A}2.{FFFFFF} Восстанавливать состояние!\n{F6DB6A}3.{FFFFFF} Заниматься установкой AutoLock!"
+		    	local DialogText = "{F6DB6A}1.{FFFFFF} Р РµРјРѕРЅС‚РёСЂРѕРІР°С‚СЊ Р°РІС‚Рѕ!\n{F6DB6A}2.{FFFFFF} Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ!\n{F6DB6A}3.{FFFFFF} Р—Р°РЅРёРјР°С‚СЊСЃСЏ СѓСЃС‚Р°РЅРѕРІРєРѕР№ AutoLock!"
 	 		    dialogId = 381
 	 		    dialogButton = nil
 	  		    dialogListItem = nil
 			    dialogInput = nil
 			    dialogBool = false
-			    sampShowDialog(dialogId, "{FFFFFF}Выбор работы" , DialogText, "Принять", "Отмена", 4)
+			    sampShowDialog(dialogId, "{FFFFFF}Р’С‹Р±РѕСЂ СЂР°Р±РѕС‚С‹" , DialogText, "РџСЂРёРЅСЏС‚СЊ", "РћС‚РјРµРЅР°", 4)
 			    while not dialogBool do
 	 		   	wait(0)
 			    	dialogBool, dialogButton, dialogListItem, dialogInput = sampHasDialogRespond(dialogId)
@@ -478,12 +478,12 @@ function DialogFunc()
 			    inicfg.save(Data, "Clicker")
     			DialogFunc()
 	    	elseif dialogListItem == 3 then
-		    	local DialogText = string.format("{F6DB6A}Введите название клавиши.\n{F6DB6A}Не стоит использовать клавиши LBUTTON, CTRL и ALT.\n\n{F6DB6A}Установленная клавиша: {FFFFFF}%s", Data.Settings.Key1)
+		    	local DialogText = string.format("{F6DB6A}Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё.\n{F6DB6A}РќРµ СЃС‚РѕРёС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєР»Р°РІРёС€Рё LBUTTON, CTRL Рё ALT.\n\n{F6DB6A}РЈСЃС‚Р°РЅРѕРІР»РµРЅРЅР°СЏ РєР»Р°РІРёС€Р°: {FFFFFF}%s", Data.Settings.Key1)
 					dialogButton = nil
 					dialogListItem = nil
 					dialogInput = nil
 					dialogBool = false
-					sampShowDialog(dialogId, "{FFFFFF}Изменение клавиши." , DialogText, "Применить", "Назад", 1)
+					sampShowDialog(dialogId, "{FFFFFF}РР·РјРµРЅРµРЅРёРµ РєР»Р°РІРёС€Рё." , DialogText, "РџСЂРёРјРµРЅРёС‚СЊ", "РќР°Р·Р°Рґ", 1)
 					sampSetCurrentDialogEditboxText(Data.Settings.Key1)
 					while not dialogBool do
 						wait(0)
@@ -496,18 +496,18 @@ function DialogFunc()
 							inicfg.save(Data, "Clicker")
 							DialogFunc()
 						else
-							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Введите название клавиши."), 0xFF0000)
+							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё."), 0xFF0000)
 						end
 					else
 						DialogFunc()
 					end	
 			elseif dialogListItem == 4 then
-		    	local DialogText = string.format("{F6DB6A}Введите название клавиши.\n{F6DB6A}Не стоит использовать клавиши LBUTTON, CTRL и ALT.\n\n{F6DB6A}Установленная клавиша: {FFFFFF}%s", Data.Settings.Key2)
+		    	local DialogText = string.format("{F6DB6A}Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё.\n{F6DB6A}РќРµ СЃС‚РѕРёС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєР»Р°РІРёС€Рё LBUTTON, CTRL Рё ALT.\n\n{F6DB6A}РЈСЃС‚Р°РЅРѕРІР»РµРЅРЅР°СЏ РєР»Р°РІРёС€Р°: {FFFFFF}%s", Data.Settings.Key2)
 					dialogButton = nil
 					dialogListItem = nil
 					dialogInput = nil
 					dialogBool = false
-					sampShowDialog(dialogId, "{FFFFFF}Изменение клавиши." , DialogText, "Применить", "Назад", 1)
+					sampShowDialog(dialogId, "{FFFFFF}РР·РјРµРЅРµРЅРёРµ РєР»Р°РІРёС€Рё." , DialogText, "РџСЂРёРјРµРЅРёС‚СЊ", "РќР°Р·Р°Рґ", 1)
 					sampSetCurrentDialogEditboxText(Data.Settings.Key2)
 					while not dialogBool do
 						wait(0)
@@ -520,7 +520,7 @@ function DialogFunc()
 							inicfg.save(Data, "Clicker")
 							DialogFunc()
 						else
-							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Введите название клавиши."), 0xFF0000)
+							sampAddChatMessage(string.format("{00FA9A}[Clicker]{FF0000} Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєР»Р°РІРёС€Рё."), 0xFF0000)
 						end
 					else
 						DialogFunc()
@@ -549,12 +549,12 @@ function update()
 	end)
 end
 function goupdate()
-sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}Обновление до версии: {00FA9A}'..version), 0xFFFFFF)
-sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}Текущая версия: '..thisScript().version..), 0xFFFFFF)
+sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}РћР±РЅРѕРІР»РµРЅРёРµ РґРѕ РІРµСЂСЃРёРё: {00FA9A}'..version), 0xFFFFFF)
+sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}РўРµРєСѓС‰Р°СЏ РІРµСЂСЃРёСЏ: '..thisScript().version..), 0xFFFFFF)
 wait(300)
 downloadUrlToFile(updatelink, thisScript().path, function(id3, status1, p13, p23)
 	if status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-	sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}Обновление завершено!'), 0xFFFFFF)
+	sampAddChatMessage(('{00FA9A}[Clicker]{FFD700}: {FFFFFF}РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!'), 0xFFFFFF)
 	goplay = 1
 	thisScript():reload()
 end
