@@ -1,6 +1,6 @@
 script_name("Clicker")
 script_version("1.0")
-script_author("GRYCH")
+script_author("GORYCH")
 script_description("/pisser")
 
 local hook = require 'lib.samp.events'
@@ -22,7 +22,7 @@ function main()
 			autoupdate = 1,
 		},
 	}, "Clicker")
-	if data.options.autoupdate == 1 then
+	if Data.Settings.autoupdate == 1 then
 	    sampAddChatMessage("{00FA9A}Clicker{FFD700} |{FFFFFF} Проверка обновлений ...", 0xFFFFFF)
 		update()
 		while update ~= false do wait(100) end
